@@ -1,0 +1,8 @@
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe.config
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.pdb
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\obj\Debug\AutomatedWindowsService.csproj.AssemblyReference.cache
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\obj\Debug\AutomatedWindowsService.csproj.SuggestedBindingRedirects.cache
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\obj\Debug\AutomatedWindowsService.csproj.CoreCompileInputs.cache
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\obj\Debug\AutomatedWindowsService.exe
+C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\obj\Debug\AutomatedWindowsService.pdb

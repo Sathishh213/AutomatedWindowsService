@@ -1,0 +1,14 @@
+﻿
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe assembly's progress.
+The file is located at C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe assembly's progress.
+The file is located at C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.

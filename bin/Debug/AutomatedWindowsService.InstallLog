@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.InstallLog
+   assemblypath = C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe assembly.
+Committing assembly 'C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.InstallLog
+   assemblypath = C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\Welcome\source\repos\Sathishh213\AutomatedWindowsService\bin\Debug\AutomatedWindowsService.exe assembly.
+Remove InstallState file because there are no installers.
