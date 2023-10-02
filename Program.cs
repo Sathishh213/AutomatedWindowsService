@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -14,12 +15,15 @@ namespace AutomatedWindowsService
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            AutomatedWindowsService ServicesToRun = new AutomatedWindowsService();
+            if (!Debugger.IsAttached)
             {
-                new AutomatedWindowsService()
-            };
-            ServiceBase.Run(ServicesToRun);
+                ServiceBase.Run(ServicesToRun);
+            }
+            else
+            {
+                ServicesToRun.BeginService();
+            }
         }
     }
 }

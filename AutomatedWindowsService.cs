@@ -19,23 +19,27 @@ namespace AutomatedWindowsService
 {
     public partial class AutomatedWindowsService : ServiceBase
     {
+        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+        private MainThread _mainThread;
+        private Timer _timer;
+        private readonly ManualResetEvent mainStartupEvent = new ManualResetEvent(false),
+            mainShutdownEvent = new ManualResetEvent(false);
+
         public AutomatedWindowsService()
         {
             InitializeComponent();
-            int strTime = Convert.ToInt32(ConfigurationManager.AppSettings["callDuration"]);
-            getCallType = Convert.ToInt32(ConfigurationManager.AppSettings["CallType"]);
-            if (getCallType == 1)
+        }
+
+        public void BeginService()
+        {
+            try
             {
-                timer1 = new System.Timers.Timer();
-                double inter = (double)GetNextInterval();
-                timer1.Interval = inter;
-                timer1.Elapsed += new ElapsedEventHandler(ServiceTimer_Tick);
+                _mainThread = new MainThread(_cts.Token,mainStartupEvent,mainShutdownEvent);
+                _mainThread.Main();
             }
-            else
+            catch (Exception ex)
             {
-                timer1 = new System.Timers.Timer();
-                timer1.Interval = strTime * 1000;
-                timer1.Elapsed += new ElapsedEventHandler(ServiceTimer_Tick);
+                throw ex;
             }
         }
 
@@ -45,56 +49,17 @@ namespace AutomatedWindowsService
 
         protected override void OnStart(string[] args)
         {
-            timer1.AutoReset = true;
-            timer1.Enabled = true;
-            ServiceLog.WriteErrorLog("Daily Reporting service started");
+            BeginService();
         }
 
         protected override void OnStop()
         {
-            timer1.AutoReset = false;
-            timer1.Enabled = false;
-            ServiceLog.WriteErrorLog("Daily Reporting service stopped");
+            _cts.Cancel();
+            mainShutdownEvent.WaitOne();
+            mainShutdownEvent.Dispose();
+            mainStartupEvent.Dispose();
+            _cts.Dispose();
         }
 
-        private double GetNextInterval()
-        {
-            timeString = ConfigurationManager.AppSettings["StartTime"];
-            DateTime t = DateTime.Parse(timeString);
-            TimeSpan ts = new TimeSpan();
-            int x;
-            ts = t - System.DateTime.Now;
-            if (ts.TotalMilliseconds < 0)
-            {
-                ts = t.AddDays(1) - System.DateTime.Now;//Here you can increase the timer interval based on your requirments.   
-            }
-            return ts.TotalMilliseconds;
-        }
-        private void SetTimer()
-        {
-            try
-            {
-                double inter = (double)GetNextInterval();
-                timer1.Interval = inter;
-                timer1.Start();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
-        private void ServiceTimer_Tick(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            string Msg = "Hi ! This is DailyMailSchedulerService mail.";//whatever msg u want to send write here.  
-                                                                        // Here you can write the   
-            ServiceLog.SendEmail("sathishkumarr2168@gmail.com", null, null, "Daily Report of DailyMailSchedulerService on " + DateTime.Now.ToString("dd-MMM-yyyy"), Msg);
-
-            if (getCallType == 1)
-            {
-                timer1.Stop();
-                System.Threading.Thread.Sleep(1000000);
-                SetTimer();
-            }
-        }
     }
 }

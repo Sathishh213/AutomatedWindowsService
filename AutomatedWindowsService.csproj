@@ -51,6 +51,7 @@
     <Compile Include="AutomatedWindowsService.Designer.cs">
       <DependentUpon>AutomatedWindowsService.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainThread.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLog.cs" />

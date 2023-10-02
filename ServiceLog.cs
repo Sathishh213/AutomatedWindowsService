@@ -33,32 +33,37 @@ namespace AutomatedWindowsService
                 mailMessage.To.Add(new MailAddress(ToEMailId)); //adding multiple TO Email Id  
             }
 
-
-            string[] CCId = cc.Split(',');
-
-            foreach (string CCEmail in CCId)
+            if (!string.IsNullOrEmpty(cc))
             {
-                mailMessage.CC.Add(new MailAddress(CCEmail)); //Adding Multiple CC email Id  
+                string[] CCId = cc.Split(',');
+
+                foreach (string CCEmail in CCId)
+                {
+                    mailMessage.CC.Add(new MailAddress(CCEmail)); //Adding Multiple CC email Id  
+                }
             }
 
-            string[] bccid = bcc.Split(',');
-
-            foreach (string bccEmailId in bccid)
+            if (!string.IsNullOrEmpty(bcc))
             {
-                mailMessage.Bcc.Add(new MailAddress(bccEmailId)); //Adding Multiple BCC email Id  
+                string[] bccid = bcc.Split(',');
+
+                foreach (string bccEmailId in bccid)
+                {
+                    mailMessage.Bcc.Add(new MailAddress(bccEmailId)); //Adding Multiple BCC email Id  
+                }
             }
-            SmtpClient smtp = new SmtpClient();  // creating object of smptpclient  
-            smtp.Host = HostAdd;              //host of emailaddress for example smtp.gmail.com etc  
+
+            SmtpClient smtp = new SmtpClient(HostAdd);  // creating object of smptpclient  
+            //smtp.Host = HostAdd;              //host of emailaddress for example smtp.gmail.com etc  
 
             //network and security related credentials  
-
-            smtp.EnableSsl = false;
+            smtp.UseDefaultCredentials = false;
             NetworkCredential NetworkCred = new NetworkCredential();
             NetworkCred.UserName = mailMessage.From.Address;
             NetworkCred.Password = Pass;
-            smtp.UseDefaultCredentials = true;
             smtp.Credentials = NetworkCred;
-            smtp.Port = 3535;
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
             smtp.Send(mailMessage); //sending Email  
         }
 
